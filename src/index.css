@@ -6,48 +6,12 @@
   box-sizing: border-box;
 }
 
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/inter-latin-400-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/inter-latin-500-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/inter-latin-600-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/inter-latin-700-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url('/fonts/inter-latin-800-normal.woff2') format('woff2');
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: #0b1121;
   color: #e2e8f0;
   line-height: 1.6;
@@ -121,14 +85,18 @@ section {
   position: relative;
 }
 
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 .section-title::after {
   content: '';
   display: block;
-  width: 70px;
-  height: 4px;
-  background: linear-gradient(135deg, #0EA5E9, #10B981);
-  margin: 0.75rem auto 0;
-  border-radius: 2px;
+  width: 80px;
+  height: 16px;
+  margin: 0.5rem auto 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 16'%3E%3Cpath d='M2,10 C12,2 18,14 28,8 C38,2 48,14 58,8 C68,2 74,14 78,10' fill='none' stroke='%230EA5E9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' opacity='0.8'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
 }
 
 .gradient-text {
@@ -157,6 +125,7 @@ section {
   background: linear-gradient(135deg, #0EA5E9, #10B981);
   color: #fff;
   box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+  border: 1px solid rgba(14, 165, 233, 0.3);
 }
 
 .btn-primary::before {
@@ -175,20 +144,20 @@ section {
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px) rotate(-0.3deg);
   box-shadow: 0 8px 30px rgba(14, 165, 233, 0.45);
 }
 
 .btn-outline {
   background: transparent;
   color: #38BDF8;
-  border: 2px solid rgba(56, 189, 248, 0.4);
+  border: 1.5px dashed rgba(56, 189, 248, 0.5);
 }
 
 .btn-outline:hover {
   background: rgba(56, 189, 248, 0.1);
   border-color: #38BDF8;
-  transform: translateY(-3px);
+  transform: translateY(-3px) rotate(0.3deg);
   box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
 }
 

@@ -1,12 +1,12 @@
-﻿/* ============ NOISE OVERLAY ============ */
+﻿/* ============ SKETCHBOOK TEXTURE OVERLAY ============ */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
 }
@@ -178,46 +178,49 @@ body::after {
 
 .hero__bg-shape {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.15;
+  pointer-events: none;
   will-change: transform;
+  opacity: 0.35;
 }
 
 .hero__bg-shape--1 {
-  width: 500px;
-  height: 500px;
-  background: #0EA5E9;
-  top: -10%;
-  right: -10%;
-  animation: float 35s ease-in-out infinite;
+  width: 400px;
+  height: 400px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cpath d='M50,200 C50,80 150,20 200,20 C250,20 350,80 350,200 C350,320 250,380 200,380 C150,380 50,320 50,200z' fill='none' stroke='%230EA5E9' stroke-width='1.5' stroke-linecap='round' stroke-dasharray='6 8' opacity='0.5'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+  top: -15%;
+  right: -5%;
+  animation: float 45s ease-in-out infinite;
 }
 
 .hero__bg-shape--2 {
-  width: 400px;
-  height: 400px;
-  background: #10B981;
+  width: 300px;
+  height: 300px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cpath d='M150,20 C220,20 280,80 280,150 C280,220 220,280 150,280 C80,280 20,220 20,150 C20,80 80,20 150,20z' fill='none' stroke='%2310B981' stroke-width='1.5' stroke-linecap='round' stroke-dasharray='4 10' opacity='0.45'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
   bottom: -10%;
   left: -10%;
-  animation: float 40s ease-in-out infinite reverse;
+  animation: float 50s ease-in-out infinite reverse;
 }
 
 .hero__bg-shape--3 {
-  width: 300px;
-  height: 300px;
-  background: #059669;
-  top: 40%;
-  left: 50%;
-  animation: float 30s ease-in-out infinite 5s;
+  width: 200px;
+  height: 200px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100,15 C145,15 185,55 185,100 C185,145 145,185 100,185 C55,185 15,145 15,100 C15,55 55,15 100,15z' fill='none' stroke='%23059669' stroke-width='1.5' stroke-linecap='round' stroke-dasharray='3 6' opacity='0.4'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+  top: 35%;
+  left: 55%;
+  animation: float 40s ease-in-out infinite 5s;
 }
 
 .hero__bg-shape--4 {
-  width: 200px;
-  height: 200px;
-  background: #06b6d4;
-  top: 20%;
-  right: 30%;
-  animation: float 35s ease-in-out infinite 8s;
+  width: 150px;
+  height: 150px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150'%3E%3Cpath d='M75,10 C115,10 140,35 140,75 C140,115 115,140 75,140 C35,140 10,115 10,75 C10,35 35,10 75,10z' fill='none' stroke='%2306b6d4' stroke-width='1.5' stroke-linecap='round' stroke-dasharray='3 5' opacity='0.4'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+  top: 15%;
+  right: 35%;
+  animation: float 45s ease-in-out infinite 8s;
 }
 
 @keyframes float {
@@ -541,7 +544,7 @@ body::after {
 
 .about__stat:hover {
   border-color: rgba(14, 165, 233, 0.3);
-  transform: translateY(-4px);
+  transform: translateY(-3px) rotate(0.5deg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -617,7 +620,7 @@ body::after {
 
 .skills__card:hover,
 .skills__card--active {
-  transform: translateY(-6px);
+  transform: translateY(-4px) rotate(-0.5deg);
   border-color: rgba(14, 165, 233, 0.25);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
@@ -675,11 +678,12 @@ body::after {
   padding: 0.35rem 0.9rem;
   background: rgba(14, 165, 233, 0.06);
   color: #cbd5e1;
-  border-radius: 20px;
+  border-radius: 4px 12px 4px 14px;
   font-size: 0.85rem;
   font-weight: 500;
-  border: 1px solid rgba(14, 165, 233, 0.12);
+  border: 1px dashed rgba(14, 165, 233, 0.2);
   transition: all 0.3s;
+  transform: rotate(-0.2deg);
 }
 
 .skills__tag:hover {
@@ -808,13 +812,14 @@ body::after {
 .product__feature::before {
   content: '';
   position: absolute;
-  left: 1rem;
+  left: 0.9rem;
   top: 1.15rem;
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.6rem;
+  height: 0.6rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0EA5E9, #10B981);
-  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.08);
+  background: transparent;
+  border: 1.5px solid #0EA5E9;
+  box-shadow: none;
 }
 
 .projects__grid {
@@ -861,7 +866,7 @@ body::after {
 
 .project-card:hover {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  transform: translateY(-4px);
+  transform: translateY(-4px) rotate(0.3deg);
   border-color: rgba(14, 165, 233, 0.2);
 }
 

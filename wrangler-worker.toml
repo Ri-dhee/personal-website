@@ -1,0 +1,7 @@
+name = "rinzin-qzz-io"
+main = "src/worker.js"
+compatibility_date = "2026-05-30"
+
+routes = [
+  { pattern = "rinzin.qzz.io/*", zone_id = "2d708b84e39362e06cc9d710da749a28" }
+]

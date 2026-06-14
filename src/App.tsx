@@ -78,10 +78,11 @@ function SectionFallback() {
 export default function App() {
   return (
     <TouchDeviceProvider>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <SmoothScroll />
       <ScrollProgress />
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <Suspense fallback={<SectionFallback />}>
           <div className="section-divider">

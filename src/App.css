@@ -85,18 +85,7 @@ body::after {
   position: relative;
 }
 
-.navbar__logo::after {
-  content: '';
-  position: absolute;
-  right: -8px;
-  top: -4px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10B981;
-  opacity: 0.6;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
+
 
 .navbar__overlay {
   display: none;

@@ -148,6 +148,11 @@ section {
   box-shadow: 0 8px 30px rgba(14, 165, 233, 0.45);
 }
 
+.btn-primary:active {
+  transform: translateY(-1px) rotate(-0.1deg) scale(0.98);
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
 .btn-outline {
   background: transparent;
   color: #38BDF8;
@@ -159,6 +164,11 @@ section {
   border-color: #38BDF8;
   transform: translateY(-3px) rotate(0.3deg);
   box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
+}
+
+.btn-outline:active {
+  transform: translateY(-1px) rotate(0.1deg) scale(0.98);
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
 }
 
 /* ============ REVEAL ANIMATIONS ============ */

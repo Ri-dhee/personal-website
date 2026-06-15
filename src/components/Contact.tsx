@@ -186,7 +186,7 @@ export default function Contact() {
                     />
                   </div>
                   {error && <p className="contact__error" role="alert">{error}</p>}
-                  <button type="submit" className="btn btn-primary contact__submit" disabled={sending}>
+                  <button type="submit" className="btn btn-primary contact__submit" disabled={sending} aria-label="Send message via contact form">
                     {sending ? 'Sending...' : 'Send Message'}
                     {!sending && (
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">

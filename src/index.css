@@ -192,6 +192,30 @@ section {
   .hero__bg-shape {
     animation: none !important;
   }
+
+  /* Disable hand-drawn rotations and effects for reduced motion */
+  .skills__card,
+  .about__stat,
+  .about__text-card,
+  .product__card,
+  .project-card,
+  .hero__avatar,
+  .hero__badge,
+  .section-kicker,
+  .project-card__tag,
+  .contact__detail,
+  .contact__social a,
+  .back-to-top {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero__avatar-ring,
+  .hero__badge::before,
+  .about__text-card::before {
+    animation: none !important;
+    opacity: 0.3 !important;
+  }
 }
 
 /* ============ SCROLL PROGRESS ============ */

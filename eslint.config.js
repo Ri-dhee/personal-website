@@ -6,7 +6,12 @@ import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist', 'node_modules', 'coverage', '.wrangler/**', 'functions/**']),
+  globalIgnores(['dist', 'node_modules', 'coverage', '.wrangler/**']),
+  {
+    files: ['functions/**/*.{js,ts}'],
+    extends: [js.configs.recommended],
+    languageOptions: { globals: { ...globals.node } },
+  },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     extends: [

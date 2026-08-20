@@ -33,12 +33,14 @@ function subscribe(cb: () => void) {
   if (!initialized) {
     initialized = true
     window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
     recompute()
   }
   return () => {
     subscribers.delete(cb)
     if (subscribers.size === 0) {
       window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
       initialized = false
     }
   }

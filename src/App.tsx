@@ -26,7 +26,7 @@ function SmoothScroll() {
     let cancelled = false
 
     function start() {
-      if (cancelled) return
+      if (cancelled || lenis) return
       lenis = new Lenis({ duration: 1.2, easing: (t) => 1 - Math.pow(1 - t, 3) })
       function raf(time: number) {
         lenis?.raf(time)

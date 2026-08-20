@@ -8,6 +8,7 @@
   '.jpeg': 'image/jpeg',
   '.gif': 'image/gif',
   '.webp': 'image/webp',
+  '.avif': 'image/avif',
   '.ico': 'image/x-icon',
   '.json': 'application/json',
   '.woff': 'font/woff',
@@ -17,41 +18,103 @@
   '.pdf': 'application/pdf',
 }
 
+function getExt(pathname) {
+  // Handle SPA routes like /about or / without extension
+  const lastSegment = pathname.split('/').pop() || ''
+  if (!lastSegment.includes('.')) return ''
+  const dot = lastSegment.lastIndexOf('.')
+  if (dot === -1) return ''
+  return lastSegment.slice(dot).toLowerCase()
+}
+
 export default {
-  async fetch(request) {
+  async fetch(request, _env) {
     const url = new URL(request.url)
 
-    if (url.pathname.startsWith('/api/')) {
-      return fetch('https://rinzin-site.pages.dev' + url.pathname + url.search, {
-        method: request.method,
-        headers: request.headers,
-        body: request.body,
-      })
+    // Security headers for all responses
+    const securityHeaders = {
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'SAMEORIGIN',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+      'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
     }
 
-    const target = new URL('https://rinzin-site.pages.dev')
-    target.pathname = url.pathname
-    target.search = url.search
+    try {
+      // API passthrough — preserve method/body only when appropriate
+      if (url.pathname.startsWith('/api/')) {
+        const apiUrl = 'https://rinzin-site.pages.dev' + url.pathname + url.search
+        const init = {
+          method: request.method,
+          headers: request.headers,
+        }
+        if (request.method !== 'GET' && request.method !== 'HEAD' && request.body) {
+          init.body = request.body
+          init.duplex = 'half'
+        }
+        const apiRes = await fetch(apiUrl, init)
+        const headers = new Headers(apiRes.headers)
+        for (const [k, v] of Object.entries(securityHeaders)) headers.set(k, v)
+        return new Response(apiRes.body, {
+          status: apiRes.status,
+          statusText: apiRes.statusText,
+          headers,
+        })
+      }
 
-    const response = await fetch(target.toString(), {
-      method: request.method,
-      headers: request.headers,
-      body: request.body,
-    })
+      const target = new URL('https://rinzin-site.pages.dev')
+      target.pathname = url.pathname
+      target.search = url.search
 
-    const ext = '.' + url.pathname.split('.').pop().toLowerCase()
-    const contentType = MIME_TYPES[ext]
+      const init = {
+        method: request.method,
+        headers: request.headers,
+      }
+      if (request.method !== 'GET' && request.method !== 'HEAD' && request.body) {
+        init.body = request.body
+        init.duplex = 'half'
+      }
 
-    if (contentType) {
+      const response = await fetch(target.toString(), init)
+
+      const ext = getExt(url.pathname)
+      const contentType = MIME_TYPES[ext]
       const headers = new Headers(response.headers)
-      headers.set('Content-Type', contentType)
+
+      for (const [k, v] of Object.entries(securityHeaders)) headers.set(k, v)
+
+      // Cache control for static assets
+      if (ext && ext !== '.html' && response.ok) {
+        // Hashed assets from Vite have immutable content
+        if (url.pathname.includes('/assets/')) {
+          headers.set('Cache-Control', 'public, max-age=31536000, immutable')
+        } else {
+          headers.set('Cache-Control', 'public, max-age=3600')
+        }
+      } else if (!ext || ext === '.html') {
+        headers.set('Cache-Control', 'public, max-age=0, must-revalidate')
+      }
+
+      if (contentType) {
+        headers.set('Content-Type', contentType)
+        return new Response(response.body, {
+          status: response.status,
+          statusText: response.statusText,
+          headers,
+        })
+      }
+
+      // For SPA routes without extension, ensure headers still applied
       return new Response(response.body, {
         status: response.status,
         statusText: response.statusText,
         headers,
       })
+    } catch (err) {
+      console.error('Worker fetch error:', err)
+      return new Response('Internal Server Error', {
+        status: 500,
+        headers: { 'Content-Type': 'text/plain', ...securityHeaders },
+      })
     }
-
-    return response
   },
 }

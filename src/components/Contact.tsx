@@ -17,10 +17,13 @@ function validate({ name, email, message }: FormData): FormErrors {
   const errors: FormErrors = {}
   if (!name.trim()) errors.name = 'Please enter your name.'
   else if (name.trim().length < 2) errors.name = 'Name is too short.'
+  else if (name.trim().length > 100) errors.name = 'Name is too long (max 100 chars).'
   if (!email.trim()) errors.email = 'Please enter your email.'
+  else if (email.trim().length > 254) errors.email = 'Email is too long.'
   else if (!EMAIL_RE.test(email.trim())) errors.email = 'That email looks invalid.'
   if (!message.trim()) errors.message = 'Please write a message.'
   else if (message.trim().length < 10) errors.message = 'Message is too short (min 10 chars).'
+  else if (message.trim().length > 2000) errors.message = 'Message is too long (max 2000 chars).'
   return errors
 }
 
@@ -136,6 +139,7 @@ export default function Contact() {
                       aria-invalid={Boolean(errors.name)}
                       aria-describedby={errors.name ? 'name-error' : undefined}
                       autoComplete="name"
+                      maxLength={100}
                       required
                     />
                     {errors.name && <p id="name-error" className="contact__field-error">{errors.name}</p>}
@@ -153,6 +157,7 @@ export default function Contact() {
                       aria-invalid={Boolean(errors.email)}
                       aria-describedby={errors.email ? 'email-error' : undefined}
                       autoComplete="email"
+                      maxLength={254}
                       required
                     />
                     {errors.email && <p id="email-error" className="contact__field-error">{errors.email}</p>}
@@ -169,6 +174,7 @@ export default function Contact() {
                       onBlur={() => setFocused(null)}
                       aria-invalid={Boolean(errors.message)}
                       aria-describedby={errors.message ? 'message-error' : undefined}
+                      maxLength={2000}
                       required
                     />
                     {errors.message && <p id="message-error" className="contact__field-error">{errors.message}</p>}
@@ -185,7 +191,7 @@ export default function Contact() {
                       autoComplete="off"
                     />
                   </div>
-                  {error && <p className="contact__error" role="alert">{error}</p>}
+                  {error && <p className="contact__error" role="alert" aria-live="assertive">{error}</p>}
                   <button type="submit" className="btn btn-primary contact__submit" disabled={sending} aria-label="Send message via contact form">
                     {sending ? 'Sending...' : 'Send Message'}
                     {!sending && (

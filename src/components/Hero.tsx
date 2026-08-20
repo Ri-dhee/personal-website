@@ -16,20 +16,26 @@ export default function Hero() {
   const reduced = useReducedMotion()
 
   useEffect(() => {
+    if (reduced) {
+      // Respect reduced motion: no typing animation, just rotate instantly
+      const id = setInterval(() => {
+        setRoleIndex((i) => (i + 1) % roles.length)
+      }, 3000)
+      return () => clearInterval(id)
+    }
+
     const current = roles[roleIndex]
     let timeout: ReturnType<typeof setTimeout>
 
     if (!deleting) {
       if (displayed.length < current.length) {
-        const speed = reduced ? 0 : 80
-        timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), speed)
+        timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 80)
       } else {
-        timeout = setTimeout(() => setDeleting(true), reduced ? 0 : 2000)
+        timeout = setTimeout(() => setDeleting(true), 2000)
       }
     } else {
       if (displayed.length > 0) {
-        const speed = reduced ? 0 : 40
-        timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), speed)
+        timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), 40)
       } else {
         setDeleting(false)
         setRoleIndex((i) => (i + 1) % roles.length)
@@ -39,15 +45,17 @@ export default function Hero() {
     return () => clearTimeout(timeout)
   }, [displayed, deleting, roleIndex, reduced])
 
+  const text = reduced ? roles[roleIndex] : displayed
+
   return (
     <section id="hero" className="hero">
-      <div className="hero__bg">
+      <div className="hero__bg" aria-hidden="true">
         <div className="hero__bg-shape hero__bg-shape--1" />
         <div className="hero__bg-shape hero__bg-shape--2" />
         <div className="hero__bg-shape hero__bg-shape--3" />
         <div className="hero__bg-shape hero__bg-shape--4" />
       </div>
-      <div className="hero__particles">
+      <div className="hero__particles" aria-hidden="true">
         <div className="hero__particle" /><div className="hero__particle" />
         <div className="hero__particle" /><div className="hero__particle" />
         <div className="hero__particle" /><div className="hero__particle" />
@@ -62,8 +70,8 @@ export default function Hero() {
             Rinzin <span className="gradient-text">Dorji</span>
           </h1>
           <h2 className="hero__title">
-            <span aria-live="polite">{displayed}</span>
-            <span className="hero__cursor" aria-hidden="true">|</span>
+            <span aria-live="polite" aria-atomic="true">{text}</span>
+            {!reduced && <span className="hero__cursor" aria-hidden="true">|</span>}
           </h2>
           <p className="hero__tagline">
             Organic Agriculture graduate with proven field experience in socio-economic
@@ -88,7 +96,7 @@ export default function Hero() {
         </div>
         <div className="hero__visual">
           <div className="hero__avatar">
-            <div className="hero__avatar-ring" />
+            <div className="hero__avatar-ring" aria-hidden="true" />
             <picture>
               <source
                 type="image/avif"

@@ -5,9 +5,9 @@ import SocialIcons from '../components/SocialIcons'
 describe('SocialIcons', () => {
   it('renders all three social links', () => {
     const { getByLabelText } = render(<SocialIcons />)
-    expect(getByLabelText('Blog')).toBeInTheDocument()
-    expect(getByLabelText('GitHub')).toBeInTheDocument()
-    expect(getByLabelText('ORCID')).toBeInTheDocument()
+    expect(getByLabelText("Link to Rinzin Dorji's Blog")).toBeInTheDocument()
+    expect(getByLabelText("Link to Rinzin Dorji's GitHub Profile")).toBeInTheDocument()
+    expect(getByLabelText("Link to Rinzin Dorji's ORCID Profile")).toBeInTheDocument()
   })
 
   it('uses hero__social class by default and contact__social for square variant', () => {
@@ -19,7 +19,7 @@ describe('SocialIcons', () => {
 
   it('opens links in new tab with rel=noopener', () => {
     const { getByLabelText } = render(<SocialIcons />)
-    const link = getByLabelText('GitHub') as HTMLAnchorElement
+    const link = getByLabelText("Link to Rinzin Dorji's GitHub Profile") as HTMLAnchorElement
     expect(link.target).toBe('_blank')
     expect(link.rel).toContain('noopener')
   })

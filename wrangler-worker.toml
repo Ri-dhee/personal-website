@@ -1,7 +1,12 @@
+# LEGACY: Proxy Worker for rinzin.qzz.io -> rinzin-site.pages.dev
+# GOLD STANDARD: Delete this file and use Pages Custom Domain instead.
+# Pages -> rinzin-site -> Custom domains -> Add rinzin.qzz.io (auto SSL, no proxy hop).
+# Keeping this file for rollback only — remove `routes` to detach Worker from domain.
 name = "rinzin-qzz-io"
 main = "src/worker.js"
 compatibility_date = "2026-05-30"
 
-routes = [
-  { pattern = "rinzin.qzz.io/*", zone_id = "2d708b84e39362e06cc9d710da749a28" }
-]
+# Detached — enable Pages Custom Domain before deleting Worker entirely
+# routes = [
+#   { pattern = "rinzin.qzz.io/*", zone_id = "2d708b84e39362e06cc9d710da749a28" }
+# ]

@@ -4,6 +4,12 @@ const rateMap = new Map()
 
 function isRateLimited(ip) {
   const now = Date.now()
+  // Light cleanup on each request to avoid unbounded growth (no global setInterval — disallowed in Pages Functions)
+  if (rateMap.size > 100) {
+    for (const [k, v] of rateMap) {
+      if (now - v.ts > RATE_LIMIT_WINDOW_MS * 2) rateMap.delete(k)
+    }
+  }
   const entry = rateMap.get(ip)
   if (!entry || now - entry.ts > RATE_LIMIT_WINDOW_MS) {
     rateMap.set(ip, { count: 1, ts: now })
@@ -12,21 +18,6 @@ function isRateLimited(ip) {
   entry.count += 1
   if (entry.count > RATE_LIMIT_MAX) return true
   return false
-}
-
-// Periodic cleanup to avoid unbounded growth (per-isolate)
-if (typeof setInterval !== 'undefined') {
-  // @ts-expect-error - global in Pages Functions isolate
-  if (!globalThis.__contactRateLimitCleanup) {
-    globalThis.__contactRateLimitCleanup = setInterval(() => {
-      const now = Date.now()
-      for (const [k, v] of rateMap) {
-        if (now - v.ts > RATE_LIMIT_WINDOW_MS * 2) rateMap.delete(k)
-      }
-    }, RATE_LIMIT_WINDOW_MS * 2)
-    // Allow process to exit in tests
-    if (globalThis.__contactRateLimitCleanup.unref) globalThis.__contactRateLimitCleanup.unref()
-  }
 }
 
 export async function onRequestPost(context) {

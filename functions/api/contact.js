@@ -100,7 +100,7 @@ export async function onRequestPost(context) {
         from: 'Rinzin Dorji <rd@mail.rinzin.qzz.io>',
         to: ['rdorji878@gmail.com'],
         subject: `New message from ${name}`,
-        replyTo: email,
+        reply_to: email,
         html: `
           <h2>New Contact Form Submission</h2>
           <p><strong>Name:</strong> ${escapeHtml(name)}</p>

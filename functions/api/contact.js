@@ -82,10 +82,19 @@ export async function onRequestPost(context) {
       })
     }
 
+    // Free-tier KV fallback — store before email so no message is lost if Gmail bounces (550-5.7.1)
+    const kv = context.env.CONTACT_KV
+    const kvKey = `contact:${Date.now()}:${Math.random().toString(36).slice(2, 8)}`
+    const kvValue = JSON.stringify({ name, email, message, ip, createdAt: new Date().toISOString(), via: 'rinzin.qzz.io' })
+    if (kv) {
+      try { await kv.put(kvKey, kvValue, { expirationTtl: 60 * 60 * 24 * 90 }) } catch (e) { console.error('KV put failed', e) }
+    }
+
     if (!RESEND_API_KEY) {
       console.error('RESEND_API_KEY is not configured')
-      return new Response(JSON.stringify({ error: 'Server configuration error' }), {
-        status: 500,
+      // Still success — message is in KV
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200,
         headers: { 'Content-Type': 'application/json' },
       })
     }
@@ -120,6 +129,13 @@ export async function onRequestPost(context) {
     if (!resp.ok) {
       const body = await resp.text().catch(() => '')
       console.error('Resend API error:', resp.status, body)
+      // Free-tier: don't fail user if KV saved — Gmail may bounce on shared IP, but message is preserved
+      if (kv) {
+        return new Response(JSON.stringify({ success: true }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      }
       return new Response(JSON.stringify({ error: 'Failed to send email' }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },

@@ -1,3 +1,7 @@
 name = "rinzin-site"
 pages_build_output_dir = "dist"
 compatibility_date = "2026-05-30"
+
+[[kv_namespaces]]
+binding = "CONTACT_KV"
+id = "50c9ce74ca6749229236a9f0506fed50"

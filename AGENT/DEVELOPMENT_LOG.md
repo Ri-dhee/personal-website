@@ -70,3 +70,16 @@ content tweak vs domain warm-up.
 
 ### Deployment status
 Production: `main` @ `997c100` via Pages Git integration → rinzin.qzz.io.
+
+## Session — constitution governance refinements (merged as #3, #4)
+
+### Completed (verified)
+- Created `AGENT/` three-layer setup via PR #3 (constitution + spec + log,
+  all checks green, squash-merged `1ef46fa`).
+- Integrated advisor governance refinements via PR #4 (merged `3197764`):
+  documentation-is-control-not-evidence meta-rule, 9-level conflict
+  hierarchy (replaces old 7-level source-of-truth list), anti-self-certification
+  block in §15. Docs only, zero code changes, all checks green.
+
+### Deployment status
+Production: `main` @ `3197764` via Pages Git integration → rinzin.qzz.io.

@@ -1,6 +1,7 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import Reveal from './Reveal'
-import SocialIcons, { CONTACT_ICONS } from './SocialIcons'
+import SocialIcons from './SocialIcons'
+import { CONTACT_ICONS } from './socialIconsConstants'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 

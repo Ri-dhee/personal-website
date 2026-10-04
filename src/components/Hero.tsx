@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import SocialIcons, { CONTACT_ICONS } from './SocialIcons'
+import SocialIcons from './SocialIcons'
+import { CONTACT_ICONS } from './socialIconsConstants'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
 const roles = [

@@ -335,6 +335,17 @@ VERIFICATION
 - Build: …
 - Runtime/live check: …
 
+CI STATUS (when CI ran)
+- PASS/FAIL — all configured checks passed/failed.
+
+VERIFICATION SCOPE
+- The checks establish: <only what they actually tested>.
+
+NOT ESTABLISHED
+- The checks do not establish: <anything outside their coverage>.
+- A green check proves only what that check tests — never report
+  "all checks passed" as "the project is correct."
+
 NOT VERIFIED
 - …
 

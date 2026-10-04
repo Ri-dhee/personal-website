@@ -112,14 +112,14 @@ export async function onRequestPost(context) {
         reply_to: email,
         html: `
           <div style="font-family:system-ui,sans-serif;line-height:1.6;color:#111">
-            <p>You received a new message via <a href="https://rinzin.qzz.io/#contact">rinzin.qzz.io</a> contact form.</p>
+            <p>You received a new message via the rinzin.qzz.io contact form.</p>
             <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0" />
             <p><strong>Name:</strong> ${escapeHtml(name)}</p>
             <p><strong>Email:</strong> ${escapeHtml(email)}</p>
             <p><strong>Message:</strong></p>
             <blockquote style="border-left:3px solid #0ea5e9;padding-left:12px;margin:8px 0;color:#334155">${escapeHtml(message).replace(/\n/g, '<br>')}</blockquote>
             <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0" />
-            <p style="font-size:12px;color:#64748b">Sent via the contact form at <a href="https://rinzin.qzz.io/#contact">rinzin.qzz.io</a>. Reply directly to this email to respond to ${escapeHtml(name)}.</p>
+            <p style="font-size:12px;color:#64748b">Sent via the rinzin.qzz.io contact form. Reply directly to this email to respond to ${escapeHtml(name)}.</p>
           </div>
         `,
         text: `New message via rinzin.qzz.io\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n---\nReply to ${email} to respond.`,

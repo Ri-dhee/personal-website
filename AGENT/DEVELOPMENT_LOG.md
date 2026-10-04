@@ -83,3 +83,14 @@ Production: `main` @ `997c100` via Pages Git integration → rinzin.qzz.io.
 
 ### Deployment status
 Production: `main` @ `3197764` via Pages Git integration → rinzin.qzz.io.
+
+## Session — CI-scope reporting rule (constitution §28)
+
+### Completed
+- Added CI STATUS / VERIFICATION SCOPE / NOT ESTABLISHED block to the
+  §28 final-response format: green CI must be reported as scoped proof,
+  never as project-wide correctness. Folded into the existing format —
+  no new section, per the freeze on new governance rules.
+- Governance freeze in effect: no further constitution additions without
+  a concrete failure mode. Next step is testing the constitution against
+  real work (ambiguity, failing tests, security-sensitive changes).

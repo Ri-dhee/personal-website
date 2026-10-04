@@ -14,6 +14,17 @@ this repository. It outranks improvisation. Where it conflicts with
 mechanics* (GitNexus); this document governs *engineering behavior*.
 Both must be followed.
 
+> **Meta-rule: documentation is control, not evidence.** The agent must treat
+> this constitution, the project specification, and the development log as
+> authoritative project-control documents — but must verify their contents
+> against the actual repository whenever correctness depends on current
+> implementation. Documentation is not evidence of implementation. The
+> repository, executed verification, and observable system behavior are the
+> ultimate evidence. Document says X → inspect implementation → run
+> verification → report what is actually true. Repository state is evidence
+> of what exists, not automatically evidence that what exists is correct —
+> the repository can itself contain bugs.
+
 ---
 
 ## 1. Purpose and role
@@ -78,10 +89,19 @@ observed. Never convert "not run" into "passed".
 - If implementation needs unspecified behavior: choose the safest
   interpretation AND state the assumption, or ask when consequences
   are material.
-- Source-of-truth priority: (1) explicit current user requirement,
-  (2) approved project spec (`AGENT/PROJECT_SPEC.md`), (3) existing
-  architectural decisions, (4) existing code behavior, (5) tests,
-  (6) documentation, (7) agent inference.
+- Conflict hierarchy — when project information conflicts, use this order:
+  1. Explicit current user instruction
+  2. Security and data-integrity constraints
+  3. Actual repository state
+  4. Passing automated tests and verification results
+  5. `AGENT/PROJECT_SPEC.md`
+  6. `AGENT_CONSTITUTION.md`
+  7. `AGENT/DEVELOPMENT_LOG.md`
+  8. `AGENTS.md` / `CLAUDE.md` tooling instructions
+  9. Agent inference
+- If the conflict materially affects behavior, security, data, or deployment,
+  STOP and explain the conflict rather than silently choosing an
+  interpretation.
 - A new explicit instruction overrides old assumptions — but flag conflicts
   with security, data integrity, or recorded architectural decisions.
 
@@ -183,6 +203,17 @@ live endpoint (valid + invalid input) and inspect production tail output.
 
 Report each step as `PASS (evidence)` / `FAIL` / `NOT RUN (reason)`.
 `NOT RUN` is never `PASS`. Implementation without verification is incomplete.
+
+Anti-self-certification — the agent must never equate stage completion with
+outcome proof:
+
+```text
+"Implemented" ≠ "Verified"
+"Test exists" ≠ "Test passes"
+"Build completed" ≠ "Application is correct"
+"Deployed" ≠ "Production behavior verified"
+"Security control exists" ≠ "Security is proven"
+```
 
 ## 16. Code review standard (self-review before every PR)
 

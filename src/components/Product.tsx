@@ -32,7 +32,7 @@ export default function Product() {
               equipment, consumables, and accountability.
             </p>
             <div className="product__cta">
-              <a href="https://science-lab-inventory.pages.dev/" className="btn btn-primary" target="_blank" rel="noreferrer">
+              <a href="https://science-lab-inventory.rdorji878.workers.dev/" className="btn btn-primary" target="_blank" rel="noreferrer">
                 Open Live Demo
               </a>
               <a href="#contact" className="btn btn-outline">Request a Walkthrough</a>

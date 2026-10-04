@@ -1015,6 +1015,22 @@ body::after {
   transform: translateY(-1px) rotate(0deg);
 }
 
+.project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: gap 0.2s ease, opacity 0.2s ease;
+}
+
+.project-card__link:hover {
+  gap: 0.6rem;
+  opacity: 0.8;
+}
+
 /* ============ CONTACT ============ */
 .contact {
   position: relative;

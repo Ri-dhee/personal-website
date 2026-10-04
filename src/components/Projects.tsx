@@ -10,26 +10,19 @@ interface Project {
   tags: string[]
   color: string
   period: string
+  link?: string
 }
 
 const projects: Project[] = [
   {
-    title: 'Cropping Calendar',
-    subtitle: 'AI-Assisted Development — JavaScript, HTML/CSS',
+    title: 'LabLedger',
+    subtitle: 'Science Lab Inventory System — Cloudflare Workers',
     description:
-      'Leveraged AI coding assistants to build an interactive digital tool for agricultural scheduling; formulated targeted prompts to generate algorithms for seasonal farming patterns and performed manual debugging to ensure a responsive UI.',
-    tags: ['JavaScript', 'AI-Assisted Development', 'Agriculture', 'UI/UX'],
-    color: '#10b981',
-    period: 'Personal Project',
-  },
-  {
-    title: 'Finapp',
-    subtitle: 'Financial Tracking App — TypeScript, JavaScript',
-    description:
-      'Utilized AI tools to rapidly scaffold a financial tracking application; managed code integration, testing, and troubleshooting to refine state management.',
-    tags: ['TypeScript', 'AI-Assisted Development', 'Finance', 'State Management'],
-    color: '#3b82f6',
-    period: 'Personal Project',
+      'Built a free inventory app for school labs, teaching labs, and makerspaces. Track equipment, manage checkouts with overdue reminders, scan QR labels, and sync offline — designed for labs that can\'t afford Quartzy.',
+    tags: ['Cloudflare Workers', 'Inventory', 'QR Codes', 'Offline-First'],
+    color: '#8b5cf6',
+    period: '2026',
+    link: 'https://science-lab-inventory.rdorji878.workers.dev/',
   },
   {
     title: 'WERELIS-Bhutan Project',
@@ -148,6 +141,17 @@ function ProjectCard({ project }: { project: Project }) {
           </span>
         ))}
       </div>
+      {project.link && (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-card__link"
+          style={{ color: project.color }}
+        >
+          View Live &rarr;
+        </a>
+      )}
     </div>
   )
 }

@@ -21,7 +21,8 @@ function isRateLimited(ip) {
 }
 
 export async function onRequestPost(context) {
-  const RESEND_API_KEY = context.env.RESEND_API_KEY
+  const RELAY_URL = context.env.CONTACT_RELAY_URL
+  const RELAY_TOKEN = context.env.CONTACT_RELAY_TOKEN
 
   // 1. Rate limit by IP (per-isolate; for durable limits use KV/Rate Limiting API)
   const ip = context.request.headers.get('cf-connecting-ip') || context.request.headers.get('x-forwarded-for') || 'unknown'
@@ -90,8 +91,12 @@ export async function onRequestPost(context) {
       try { await kv.put(kvKey, kvValue, { expirationTtl: 60 * 60 * 24 * 90 }) } catch (e) { console.error('KV put failed', e) }
     }
 
-    if (!RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is not configured')
+    // Primary sender: Apps Script relay, which mails as the owner's Gmail
+    // account itself (Gmail never filters self-sent mail). The Resend leg
+    // was removed: sends from the new shared-parent domain are
+    // content-blocked by Gmail (550-5.7.1) regardless of wording.
+    if (!RELAY_URL || !RELAY_TOKEN) {
+      console.error('CONTACT_RELAY_URL/TOKEN is not configured')
       // Still success — message is in KV
       return new Response(JSON.stringify({ success: true }), {
         status: 200,
@@ -99,37 +104,24 @@ export async function onRequestPost(context) {
       })
     }
 
-    const resp = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: 'Rinzin Dorji <contact@mail.rinzin.qzz.io>',
-        to: ['rdorji878@gmail.com'],
-        subject: `Portfolio contact: ${name}`,
-        reply_to: email,
-        html: `
-          <div style="font-family:system-ui,sans-serif;line-height:1.6;color:#111">
-            <p>You received a new message via the rinzin.qzz.io contact form.</p>
-            <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0" />
-            <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-            <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-            <p><strong>Message:</strong></p>
-            <blockquote style="border-left:3px solid #0ea5e9;padding-left:12px;margin:8px 0;color:#334155">${escapeHtml(message).replace(/\n/g, '<br>')}</blockquote>
-            <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0" />
-            <p style="font-size:12px;color:#64748b">Sent via the rinzin.qzz.io contact form. Reply directly to this email to respond to ${escapeHtml(name)}.</p>
-          </div>
-        `,
-        text: `New message via rinzin.qzz.io\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n---\nReply to ${email} to respond.`,
-      }),
-    })
+    let relayOk = false
+    try {
+      const resp = await fetch(RELAY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: RELAY_TOKEN, name, email, message }),
+      })
+      const data = await resp.json().catch(() => ({}))
+      relayOk = resp.ok && data !== null && data.ok === true
+      if (!relayOk) {
+        console.error('Relay error:', resp.status, JSON.stringify(data).slice(0, 500))
+      }
+    } catch (e) {
+      console.error('Relay fetch failed', e)
+    }
 
-    if (!resp.ok) {
-      const body = await resp.text().catch(() => '')
-      console.error('Resend API error:', resp.status, body)
-      // Free-tier: don't fail user if KV saved — Gmail may bounce on shared IP, but message is preserved
+    if (!relayOk) {
+      // Don't fail user if KV saved — message is preserved
       if (kv) {
         return new Response(JSON.stringify({ success: true }), {
           status: 200,
@@ -153,13 +145,4 @@ export async function onRequestPost(context) {
       headers: { 'Content-Type': 'application/json' },
     })
   }
-}
-
-function escapeHtml(str) {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;')
 }

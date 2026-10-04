@@ -54,9 +54,12 @@ to `/api/contact` → `functions/api/contact.js`:
 3. Validation: all fields required; name 2–100; message 10–2000;
    email ≤254 + regex.
 4. Message stored in KV (`contact:<ts>:<rand>`, 90-day TTL) BEFORE emailing.
-5. Email via Resend API: from `Rinzin Dorji <contact@mail.rinzin.qzz.io>`
-   (domain verified: SPF `amazonses.com`, DKIM `resend._domainkey` present),
-   to `rdorji878@gmail.com`, `reply_to` = sender.
+5. Email via Apps Script relay: function POSTs `{token,name,email,message}`
+   to `CONTACT_RELAY_URL`; the script (running as the owner's Google account)
+   mails `rdorji878@gmail.com` via Gmail itself with `replyTo` = sender.
+   Shared secret in `CONTACT_RELAY_TOKEN`. (Resend leg removed Oct 2026:
+   Gmail 550-5.7.1 content-blocks all sends from the new shared-parent
+   domain regardless of wording; key + DNS were verified good.)
 6. Contract: `200 {success:true}` on accept (incl. KV-fallback accepts),
    `400` validation, `429` rate-limit, `500` server error.
 7. Admin viewer `GET /api/admin/contacts` gated by `ADMIN_SECRET` env.
@@ -68,7 +71,9 @@ check Resend → Emails status, check Gmail inbox+spam.
 
 ## 7. Secrets and config (never commit)
 
-`RESEND_API_KEY`, `ADMIN_SECRET` (dashboard-only) + `CONTACT_KV` binding.
+`CONTACT_RELAY_URL`, `CONTACT_RELAY_TOKEN`, `ADMIN_SECRET`
+(dashboard-only) + `CONTACT_KV` binding. (`RESEND_API_KEY` retired with the
+Resend leg — may linger in dashboard, unused.)
 Local overrides in `.dev.vars` (gitignored). KV namespace IDs are
 non-secret identifiers. New/changed dashboard vars need a fresh deploy.
 

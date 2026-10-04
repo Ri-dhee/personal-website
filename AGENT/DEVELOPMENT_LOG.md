@@ -84,6 +84,21 @@ Production: `main` @ `997c100` via Pages Git integration → rinzin.qzz.io.
 ### Deployment status
 Production: `main` @ `3197764` via Pages Git integration → rinzin.qzz.io.
 
+## Session — Apps Script relay replaces Resend
+
+### Completed
+- Replaced the Resend send leg in `functions/api/contact.js` with an Apps
+  Script relay (`CONTACT_RELAY_URL/TOKEN` env): Gmail sends as the owner's
+  own account, unblockable by content filters.
+- Why: proven by elimination — key valid (200s), DNS verified, template
+  de-linked/de-IP'd, natural + gibberish + self-reply + yahoo-reply variants
+  ALL 550-5.7.1-blocked; Resend confirmed sending-side perfect; qzz.io is a
+  shared public suffix (no new Resend identities, shared-parent reputation).
+- `rd@mail.rinzin.qzz.io` forwarder verified ACTIVE via Gmail search —
+  mail-subdomain MX untouched. Spec §6/§7 updated. Lint PASS.
+- Pending (user-side): deploy script, set the two Production env vars,
+  confirm → redeploy trigger → end-to-end retest by agent.
+
 ## Session — CI-scope reporting rule (constitution §28)
 
 ### Completed

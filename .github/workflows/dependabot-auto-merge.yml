@@ -13,44 +13,14 @@ jobs:
     if: github.actor == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch PR metadata
-        uses: actions/github-script@v7
-        id: pr
+      - uses: dependabot/fetch-metadata@v2
+        id: meta
         with:
-          script: |
-            const pr = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number
-            });
-            return pr.data;
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check if only minor/patch updates
-        id: check
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const pr = JSON.parse('${{ steps.pr.outputs.result }}');
-            const title = pr.title.toLowerCase();
-            // Only auto-merge patch/minor, not major
-            const isMajor = title.includes('major') || title.includes('v0.') || title.includes('v1.') || title.includes('v2.') || title.includes('v3.') || title.includes('v4.') || title.includes('v5.') || title.includes('v6.') || title.includes('v7.') || title.includes('v8.') || title.includes('v9.');
-            return !isMajor;
-
-      - name: Enable auto-merge
-        if: steps.check.outputs.result == 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.pulls.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number,
-              merge_method: 'squash'
-            });
-            await github.graphql(`
-              mutation($prId: ID!) {
-                enablePullRequestAutoMerge(input: {pullRequestId: $prId, mergeMethod: SQUASH}) {
-                  pullRequest { autoMergeRequest { enabledAt } }
-                }
-              }
-            `, { prId: '${{ steps.pr.outputs.result.node_id }}' });
+      - name: Enable auto-merge for patch and minor updates
+        if: steps.meta.outputs.update-type != 'version-update:semver-major'
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

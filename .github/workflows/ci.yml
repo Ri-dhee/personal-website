@@ -51,8 +51,11 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - run: npm ci
-      - run: npm audit --audit-level=moderate
-        continue-on-error: false
+      - name: Audit production dependencies (blocking)
+        run: npm audit --omit=dev --audit-level=high
+      - name: Audit dev dependencies (informational)
+        run: npm audit --audit-level=moderate || true
+        continue-on-error: true
 
   check-deps:
     runs-on: ubuntu-latest

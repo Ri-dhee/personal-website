@@ -1,9 +1,11 @@
 import SocialIcons from './SocialIcons'
 import { CONTACT_ICONS } from './socialIconsConstants'
+import SciFiBackground from './SciFiBackground'
 
 export default function Hero() {
   return (
     <section id="hero" className="hero">
+      <SciFiBackground />
       <div className="hero__clouds" aria-hidden="true">
         <div className="hero__cloud hero__cloud--1" />
         <div className="hero__cloud hero__cloud--2" />

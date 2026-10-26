@@ -93,8 +93,13 @@ export default function Contact() {
           <Reveal delay={100}>
             <div className="contact__info">
                <p className="contact__description">
-                 Open to research collaborations, AI-assisted development projects, and conversations
-                 at the intersection of agriculture, technology, and sustainability.
+                 Open to research collaborations, field-enumeration work, and digital-tool projects
+                 at the intersection of agriculture and technology.
+               </p>
+               <p className="contact__handling">
+                 Enquiries are reviewed personally and answered by email, usually within a few days.
+                 You can also write directly to{' '}
+                 <a href="mailto:rdorji878@gmail.com">rdorji878@gmail.com</a>.
                </p>
               <div className="contact__details">
                 <div className="contact__detail">
@@ -193,8 +198,8 @@ export default function Contact() {
                     />
                   </div>
                   {error && <p className="contact__error" role="alert" aria-live="assertive">{error}</p>}
-                  <button type="submit" className="btn btn-primary contact__submit" disabled={sending} aria-label="Send message via contact form">
-                    {sending ? 'Sending...' : 'Send Message'}
+                  <button type="submit" className="btn btn-primary contact__submit" disabled={sending} aria-busy={sending} aria-label="Send message via contact form">
+                    {sending ? 'Sending…' : 'Send Message'}
                     {!sending && (
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                         <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />

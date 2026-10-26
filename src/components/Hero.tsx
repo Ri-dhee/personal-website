@@ -1,53 +1,7 @@
-import { useEffect, useState } from 'react'
 import SocialIcons from './SocialIcons'
 import { CONTACT_ICONS } from './socialIconsConstants'
-import { useReducedMotion } from '../hooks/useReducedMotion'
-
-const roles = [
-  'B.Sc. Organic Agriculture',
-  '2nd Cohort Pelsung',
-  'Research Enumerator',
-  'UNDP Youth Fellow',
-]
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0)
-  const [displayed, setDisplayed] = useState('')
-  const [deleting, setDeleting] = useState(false)
-  const reduced = useReducedMotion()
-
-  useEffect(() => {
-    if (reduced) {
-      // Respect reduced motion: no typing animation, just rotate instantly
-      const id = setInterval(() => {
-        setRoleIndex((i) => (i + 1) % roles.length)
-      }, 3000)
-      return () => clearInterval(id)
-    }
-
-    const current = roles[roleIndex]
-    let timeout: ReturnType<typeof setTimeout>
-
-    if (!deleting) {
-      if (displayed.length < current.length) {
-        timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 80)
-      } else {
-        timeout = setTimeout(() => setDeleting(true), 2000)
-      }
-    } else {
-      if (displayed.length > 0) {
-        timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), 40)
-      } else {
-        setDeleting(false)
-        setRoleIndex((i) => (i + 1) % roles.length)
-      }
-    }
-
-    return () => clearTimeout(timeout)
-  }, [displayed, deleting, roleIndex, reduced])
-
-  const text = reduced ? roles[roleIndex] : displayed
-
   return (
     <section id="hero" className="hero">
       <div className="hero__bg" aria-hidden="true">
@@ -70,14 +24,11 @@ export default function Hero() {
           <h1 className="hero__name">
             Rinzin <span className="gradient-text">Dorji</span>
           </h1>
-          <h2 className="hero__title">
-            <span aria-live="polite" aria-atomic="true">{text}</span>
-            {!reduced && <span className="hero__cursor" aria-hidden="true">|</span>}
-          </h2>
+          <h2 className="hero__title">Research, Agriculture &amp; Practical Digital Tools</h2>
           <p className="hero__tagline">
-            Organic Agriculture graduate with proven field experience in socio-economic
-            surveying and agricultural research. Pelsung member selected to present to
-            His Majesty the King.
+            Organic Agriculture graduate and field researcher with experience in socio-economic
+            surveying, data analysis and practical digital tools. AI assistance is used in
+            selected projects such as LabLedger, where it supports prototyping and debugging.
           </p>
           <div className="hero__contact-row">
             <span>{CONTACT_ICONS.pin} Thimphu, Bhutan</span>
@@ -85,13 +36,13 @@ export default function Hero() {
           </div>
           <div className="hero__actions">
             <a href="#projects" className="btn btn-primary">
-              <span>View My Work</span>
+              <span>View selected work</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
-            <a href="#product" className="btn btn-outline">See Featured Product</a>
-            <a href="#contact" className="btn btn-outline">Get In Touch</a>
+            <a href="#contact" className="btn btn-outline">Contact me</a>
+            <a href="/cv.pdf" className="hero__cv-link">Download CV (PDF)</a>
           </div>
           <SocialIcons variant="circle" />
         </div>
@@ -113,7 +64,7 @@ export default function Hero() {
                 src="/profile-300.jpeg"
                 srcSet="/profile-180.jpeg 180w, /profile-300.jpeg 300w, /profile-600.jpeg 600w"
                 sizes="(max-width: 768px) 180px, 300px"
-                alt="Portrait of Rinzin Dorji"
+                alt="Portrait of Rinzin Dorji in Bhutanese dress"
                 className="hero__image"
                 width={300}
                 height={300}

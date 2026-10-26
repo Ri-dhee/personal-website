@@ -4,9 +4,8 @@ import { useScrollPosition } from '../hooks/useScroll'
 const navLinks: { label: string; href: string }[] = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Product', href: '#product' },
+  { label: 'Work', href: '#projects' },
+  { label: 'Case Studies', href: '#case-studies' },
   { label: 'Contact', href: '#contact' },
 ]
 

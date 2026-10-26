@@ -5,7 +5,7 @@ import SocialIcons from '../components/SocialIcons'
 describe('SocialIcons', () => {
   it('renders all three social links', () => {
     const { getByLabelText } = render(<SocialIcons />)
-    expect(getByLabelText("Link to Rinzin Dorji's Blog")).toBeInTheDocument()
+    expect(getByLabelText('Reading Venture by Rinzin Dorji')).toBeInTheDocument()
     expect(getByLabelText("Link to Rinzin Dorji's GitHub Profile")).toBeInTheDocument()
     expect(getByLabelText("Link to Rinzin Dorji's ORCID Profile")).toBeInTheDocument()
   })

@@ -13,17 +13,7 @@ interface Project {
   link?: string
 }
 
-const projects: Project[] = [
-  {
-    title: 'LabLedger',
-    subtitle: 'Science Lab Inventory System — Cloudflare Workers',
-    description:
-      'Built a free inventory app for school labs, teaching labs, and makerspaces. Track equipment, manage checkouts with overdue reminders, scan QR labels, and sync offline — designed for labs that can\'t afford Quartzy.',
-    tags: ['Cloudflare Workers', 'Inventory', 'QR Codes', 'Offline-First'],
-    color: '#8b5cf6',
-    period: '2026',
-    link: 'https://science-lab-inventory.rdorji878.workers.dev/',
-  },
+const researchProjects: Project[] = [
   {
     title: 'WERELIS-Bhutan Project',
     subtitle: 'Field Enumerator — ICIMOD & Dept. of Energy',
@@ -34,40 +24,13 @@ const projects: Project[] = [
     period: 'Apr – Jul 2025',
   },
   {
-    title: 'Bioplastic from Potato Peel',
-    subtitle: 'Undergraduate Thesis — CNR',
+    title: 'Potato-peel bioplastic research',
+    subtitle: 'Undergraduate Thesis — College of Natural Resources',
     description:
-      'Investigated sustainable bioplastic development from agricultural waste. Utilized R for statistical interpretation of biodegradation and water resistance, achieving a 40% improvement. Presented findings to Ministry of Agriculture and Livestock.',
+      'Investigated sustainable bioplastic development from agricultural waste. Used R for statistical interpretation of biodegradation and water resistance, reporting a 40% improvement in the tested property. Findings presented to the Ministry of Agriculture and Livestock.',
     tags: ['R', 'Lab Research', 'Sustainability', 'Agri-Waste'],
     color: '#22c55e',
     period: 'Sep 2023 – May 2024',
-  },
-  {
-    title: 'Pelsung National Service',
-    subtitle: '2nd Cohort — Gelephu Mindfulness City',
-    description:
-      'Trained in institutional trust, confidentiality protocols, and national service standards. Selected to represent the Pelsung group in a presentation to His Majesty the King, delivering project implementation strategies with clarity and professionalism.',
-    tags: ['Leadership', 'Public Speaking', 'Governance'],
-    color: '#f59e0b',
-    period: '2025 – Present',
-  },
-  {
-    title: 'Springboard ELEVATE Fellowship',
-    subtitle: 'Youth Co:Lab — UNDP & Citi Foundation',
-    description:
-      'Designed pitch-ready solutions for youth livelihood challenges focusing on inclusive innovation. Developed capacity in design thinking and social impact measurement.',
-    tags: ['Design Thinking', 'Social Impact', 'Youth Development'],
-    color: '#0EA5E9',
-    period: 'Sep – Nov 2024',
-  },
-  {
-    title: 'National Agrifood Innovation Challenge',
-    subtitle: 'Loden Foundation, FAO, UNDP',
-    description:
-      'Developed a value-chain solution for Bhutan\'s agrifood sector. Pitched to international and local dignitaries, showcasing innovation in sustainable food systems.',
-    tags: ['Agri-Food', 'Innovation', 'Pitching'],
-    color: '#10B981',
-    period: 'Aug – Sep 2024',
   },
   {
     title: 'Organic Farm Internship',
@@ -77,6 +40,19 @@ const projects: Project[] = [
     tags: ['Organic Agriculture', 'Regenerative Farming', 'Community Outreach'],
     color: '#14b8a6',
     period: 'Dec 2022 – Jan 2023',
+  },
+]
+
+const digitalProjects: Project[] = [
+  {
+    title: 'LabLedger — Science Lab Inventory',
+    subtitle: 'Inventory system for school and teaching labs — Cloudflare Workers',
+    description:
+      'Built a free inventory app for school labs, teaching labs and makerspaces. Track equipment, manage checkouts with overdue reminders, scan QR labels and review audit history — designed for labs that cannot afford commercial systems.',
+    tags: ['Cloudflare Workers', 'Inventory', 'QR Codes', 'Audit History'],
+    color: '#8b5cf6',
+    period: '2026',
+    link: 'https://science-lab-inventory.rdorji878.workers.dev/',
   },
 ]
 
@@ -156,20 +132,32 @@ function ProjectCard({ project }: { project: Project }) {
   )
 }
 
+function ProjectGroup({ title, projects }: { title: string; projects: Project[] }) {
+  return (
+    <div className="projects__group">
+      <Reveal>
+        <h3 className="projects__group-title">{title}</h3>
+      </Reveal>
+      <div className="projects__grid">
+        {projects.map((project, i) => (
+          <Reveal key={project.title} delay={i * 80}>
+            <ProjectCard project={project} />
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Projects() {
   return (
     <section id="projects" className="projects">
       <div className="container">
         <Reveal>
-          <h2 className="section-title">Research & Field Experience</h2>
+          <h2 className="section-title">Selected Work</h2>
         </Reveal>
-        <div className="projects__grid">
-          {projects.map((project, i) => (
-            <Reveal key={project.title} delay={i * 80}>
-              <ProjectCard project={project} />
-            </Reveal>
-          ))}
-        </div>
+        <ProjectGroup title="Research and fieldwork" projects={researchProjects} />
+        <ProjectGroup title="Digital projects" projects={digitalProjects} />
       </div>
     </section>
   )

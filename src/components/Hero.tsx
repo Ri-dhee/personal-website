@@ -36,7 +36,6 @@ export default function Hero() {
               </svg>
             </a>
             <a href="#contact" className="btn btn-outline">Contact me</a>
-            <a href="/cv.pdf" className="hero__cv-link">Download CV (PDF)</a>
           </div>
           <SocialIcons variant="circle" />
         </div>

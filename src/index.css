@@ -1,9 +1,23 @@
-﻿*,
+*,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --ink: #e2e8f0;
+  --ink-soft: #cbd5e1;
+  --ivory: #0b1121;
+  --ivory-soft: #0f172a;
+  --paper: #111827;
+  --forest: #22c55e;
+  --forest-soft: #16a34a;
+  --saffron: #f59e0b;
+  --line: rgba(226, 232, 240, 0.12);
+  --muted: #94a3b8;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
 html {
@@ -12,15 +26,15 @@ html {
 
 body {
   font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #0b1121;
-  color: #e2e8f0;
-  line-height: 1.6;
+  background: var(--ivory);
+  color: var(--ink);
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: rgba(14, 165, 233, 0.3);
+  background: rgba(45, 90, 61, 0.3);
   color: #fff;
 }
 
@@ -37,7 +51,7 @@ a {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #f1f5f9;
+  color: var(--ink);
 }
 
 .about__timeline-list {
@@ -59,18 +73,18 @@ a {
 
 .about__timeline-period {
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: var(--muted);
   font-weight: 600;
 }
 
 .about__timeline-item p {
   margin-top: 0.25rem;
   font-size: 0.95rem;
-  color: #cbd5e1;
+  color: var(--ink-soft);
 }
 
 .case-studies {
-  background: #0f172a;
+  background: var(--ivory-soft);
 }
 
 .case-study {
@@ -83,12 +97,12 @@ a {
 .case-study__title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--ink);
   margin-bottom: 0.25rem;
 }
 
 .case-study__subtitle {
-  color: #94a3b8;
+  color: var(--muted);
   margin-bottom: 1rem;
 }
 
@@ -99,12 +113,12 @@ a {
 
 .case-study__item dt {
   font-weight: 600;
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .case-study__item dd {
   margin: 0.25rem 0 0;
-  color: #cbd5e1;
+  color: var(--ink-soft);
 }
 
 .projects__group {
@@ -114,26 +128,26 @@ a {
 .projects__group-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--ink);
   margin-bottom: 1rem;
 }
 
 .contact__handling {
   margin-top: 1rem;
   font-size: 0.95rem;
-  color: #cbd5e1;
+  color: var(--ink-soft);
 }
 
 .hero__cv-link {
   display: inline-block;
   margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: #94a3b8;
+  color: var(--muted);
   text-decoration: underline;
 }
 
 .hero__cv-link:hover {
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .skip-link {
@@ -142,7 +156,7 @@ a {
   left: 1rem;
   z-index: 10000;
   padding: 0.75rem 1.5rem;
-  background: #0EA5E9;
+  background: var(--forest);
   color: #fff;
   font-weight: 600;
   font-size: 0.9rem;
@@ -157,7 +171,7 @@ a {
 a:focus-visible,
 button:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid #0EA5E9;
+  outline: 2px solid var(--forest);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -189,7 +203,7 @@ section {
   font-weight: 800;
   margin-bottom: 3.5rem;
   text-align: center;
-  color: #f1f5f9;
+  color: var(--ink);
   position: relative;
 }
 
@@ -208,7 +222,7 @@ section {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #0EA5E9, #10B981);
+  background: linear-gradient(135deg, var(--forest), var(--forest-soft));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -230,10 +244,10 @@ section {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #0EA5E9, #10B981);
+  background: linear-gradient(135deg, var(--forest), var(--forest-soft));
   color: #fff;
-  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
-  border: 1px solid rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 15px rgba(45, 90, 61, 0.3);
+  border: 1px solid rgba(45, 90, 61, 0.3);
 }
 
 .btn-primary::before {
@@ -253,30 +267,30 @@ section {
 
 .btn-primary:hover {
   transform: translateY(-3px) rotate(-0.3deg);
-  box-shadow: 0 8px 30px rgba(14, 165, 233, 0.45);
+  box-shadow: 0 8px 30px rgba(45, 90, 61, 0.45);
 }
 
 .btn-primary:active {
   transform: translateY(-1px) rotate(-0.1deg) scale(0.98);
-  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 15px rgba(45, 90, 61, 0.3);
 }
 
 .btn-outline {
   background: transparent;
-  color: #38BDF8;
-  border: 1.5px dashed rgba(56, 189, 248, 0.5);
+  color: var(--forest);
+  border: 1.5px dashed rgba(45, 90, 61, 0.5);
 }
 
 .btn-outline:hover {
-  background: rgba(56, 189, 248, 0.1);
-  border-color: #38BDF8;
+  background: rgba(45, 90, 61, 0.1);
+  border-color: var(--forest);
   transform: translateY(-3px) rotate(0.3deg);
-  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 8px 25px rgba(45, 90, 61, 0.2);
 }
 
 .btn-outline:active {
   transform: translateY(-1px) rotate(0.1deg) scale(0.98);
-  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 4px 15px rgba(45, 90, 61, 0.15);
 }
 
 /* ============ REVEAL ANIMATIONS ============ */
@@ -343,7 +357,7 @@ section {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #0EA5E9, #10B981);
+  background: linear-gradient(90deg, var(--forest), var(--forest-soft));
   z-index: 1001;
   transform-origin: left;
   border-radius: 0 2px 2px 0;
@@ -357,7 +371,7 @@ section {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0EA5E9, #10B981);
+  background: linear-gradient(135deg, var(--forest), var(--forest-soft));
   color: #fff;
   border: none;
   cursor: pointer;
@@ -369,7 +383,7 @@ section {
   pointer-events: none;
   transition: all 0.3s ease;
   z-index: 999;
-  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+  box-shadow: 0 4px 15px rgba(45, 90, 61, 0.4);
 }
 
 .back-to-top--visible {
@@ -380,5 +394,8 @@ section {
 
 .back-to-top:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6);
+  box-shadow: 0 6px 20px rgba(45, 90, 61, 0.6);
 }
+
+
+

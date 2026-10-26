@@ -84,6 +84,13 @@ export default function About() {
                 field-enumeration work, and digital-tool projects at the intersection of
                 agriculture and technology.
               </p>
+              <p>
+                I also publish essays and reflections on{' '}
+                <a href="https://abetterlifelearning.blogspot.com" target="_blank" rel="noopener noreferrer">
+                  Reading Venture
+                </a>
+                , my journal from Bhutan.
+              </p>
             </div>
           </Reveal>
           <Reveal delay={200} direction="right">

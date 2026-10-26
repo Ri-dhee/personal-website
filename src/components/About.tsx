@@ -55,7 +55,7 @@ const experience = [
   { period: 'Aug – Sep 2024', role: 'National Agrifood Innovation Challenge (Loden, FAO, UNDP)', detail: 'Value-chain solution for Bhutan’s agrifood sector, pitched to dignitaries.' },
   { period: 'Sep 2023 – May 2024', role: 'Undergraduate thesis, CNR (potato-peel bioplastic)', detail: 'Lab research, statistical analysis in R, findings presented to the Ministry of Agriculture and Livestock.' },
   { period: 'Dec 2022 – Jan 2023', role: 'Organic farm internship, Samdrup Jongkhar Initiative', detail: 'Regenerative agriculture practice and community outreach.' },
-  { period: '2024 – Present', role: 'Editor and maintainer, Reading Venture (blog)', detail: 'Maintaining a Blogger-based journal from Bhutan: custom theme, SEO, content planning, and publishing essays on agriculture, technology, AI, and Bhutanese development.' },
+  { period: '2024 – Present', role: 'Maintainer, Reading Venture (personal blog)', detail: 'A small writing project kept running as a passion: theming, SEO, content planning, and publishing essays on agriculture, technology, AI, and Bhutanese development.' },
 ]
 
 export default function About() {
@@ -86,14 +86,13 @@ export default function About() {
                 agriculture and technology.
               </p>
               <p>
-                I also publish essays and reflections on{' '}
+                I also write on{' '}
                 <a href="https://abetterlifelearning.blogspot.com" target="_blank" rel="noopener noreferrer">
                   Reading Venture
                 </a>
-                , my journal from Bhutan. Maintained for over two years, it covers sustainable
-                agriculture and soil data, AI and software supply-chain security, Bhutanese
-                development (including Gelephu Mindfulness City), and personal growth — with
-                hands-on work in Blogger theming, SEO, content planning, and publishing.
+                , a small blog I have kept running for over two years as a personal passion
+                project. It covers sustainable agriculture, soil data, AI, Bhutanese development,
+                and personal growth, with hands-on work in theming, SEO, and publishing.
               </p>
             </div>
           </Reveal>

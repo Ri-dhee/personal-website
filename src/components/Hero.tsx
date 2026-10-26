@@ -4,19 +4,6 @@ import { CONTACT_ICONS } from './socialIconsConstants'
 export default function Hero() {
   return (
     <section id="hero" className="hero">
-      <div className="hero__bg" aria-hidden="true">
-        <div className="hero__bg-shape hero__bg-shape--1" />
-        <div className="hero__bg-shape hero__bg-shape--2" />
-        <div className="hero__bg-shape hero__bg-shape--3" />
-        <div className="hero__bg-shape hero__bg-shape--4" />
-      </div>
-      <div className="hero__particles" aria-hidden="true">
-        <div className="hero__particle" /><div className="hero__particle" />
-        <div className="hero__particle" /><div className="hero__particle" />
-        <div className="hero__particle" /><div className="hero__particle" />
-        <div className="hero__particle" /><div className="hero__particle" />
-        <div className="hero__particle" /><div className="hero__particle" />
-      </div>
       <div className="container hero__inner">
         <div className="hero__content">
           <div className="hero__badge">Open to opportunities</div>
@@ -36,20 +23,20 @@ export default function Hero() {
           </div>
           <div className="hero__actions">
             <a href="#projects" className="btn btn-primary">
-              <span>View selected work</span>
+              <span>Explore my work</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
             <a href="#contact" className="btn btn-outline">Contact me</a>
-            <a href="/cv.pdf" className="hero__cv-link">Download CV (PDF)</a>
           </div>
+          <a href="/cv.pdf" className="hero__cv-link">Download CV (PDF)</a>
           <SocialIcons variant="circle" />
         </div>
         <div className="hero__visual">
-          <div className="hero__avatar">
-            <div className="hero__avatar-ring" aria-hidden="true" />
-            <picture>
+          <figure className="hero__portrait">
+            <div className="hero__avatar">
+              <picture>
               <source
                 type="image/avif"
                 srcSet="/profile-96.avif 96w, /profile-180.avif 180w, /profile-300.avif 300w, /profile-600.avif 600w"
@@ -74,7 +61,9 @@ export default function Hero() {
               />
             </picture>
           </div>
-        </div>
+          <figcaption className="hero__portrait-caption">Rinzin Dorji — field researcher, Thimphu, Bhutan</figcaption>
+        </figure>
+      </div>
       </div>
     </section>
   )

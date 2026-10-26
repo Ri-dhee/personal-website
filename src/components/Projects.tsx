@@ -54,6 +54,16 @@ const digitalProjects: Project[] = [
     period: '2026',
     link: 'https://science-lab-inventory.rdorji878.workers.dev/',
   },
+  {
+    title: 'Reading Venture',
+    subtitle: 'Personal blog — Blogger',
+    description:
+      'A small writing space I have maintained for over two years, sharing essays on sustainable agriculture, soil data, AI and software, Bhutanese development, and personal growth. Hands-on work in theming, SEO, and publishing.',
+    tags: ['Blogging', 'SEO', 'Content', 'Bhutan'],
+    color: '#f59e0b',
+    period: '2024 – Present',
+    link: 'https://abetterlifelearning.blogspot.com',
+  },
 ]
 
 function ProjectCard({ project }: { project: Project }) {

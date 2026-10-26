@@ -497,7 +497,7 @@ body::after {
   position: absolute;
   top: -0.2rem;
   left: 0.75rem;
-  font-family: 'Kalam', cursive;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 3.5rem;
   line-height: 1;
   color: rgba(14, 165, 233, 0.2);

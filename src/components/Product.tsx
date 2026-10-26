@@ -2,7 +2,7 @@ import Reveal from './Reveal'
 
 const features = [
   'Item detail pages with QR-friendly links',
-  'Checkout approvals, returns, and audit logs',
+  'Checkout approvals, returns, and audit logs with timestamps and actor',
   'Cloudflare deployment with production checks',
   'Observability, health, and maintenance tooling',
 ]
@@ -10,7 +10,7 @@ const features = [
 const stats = [
   { value: '4', label: 'Core workflows' },
   { value: '1', label: 'Production-ready stack' },
-  { value: '100%', label: 'Tracked changes' },
+  { value: 'Audit log', label: 'Records item, checkout, return, edit events' },
 ]
 
 export default function Product() {
@@ -19,7 +19,7 @@ export default function Product() {
       <div className="container">
         <Reveal>
           <p className="section-kicker">Featured Product</p>
-          <h2 className="section-title">Science Lab Inventory</h2>
+          <h2 className="section-title">LabLedger — Science Lab Inventory</h2>
         </Reveal>
         <div className="product__layout">
           <Reveal className="product__card" delay={100} direction="left">

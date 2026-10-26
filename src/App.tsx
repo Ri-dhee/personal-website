@@ -12,6 +12,7 @@ import './App.css'
 const About = lazy(() => import('./components/About'))
 const Skills = lazy(() => import('./components/Skills'))
 const Projects = lazy(() => import('./components/Projects'))
+const CaseStudies = lazy(() => import('./components/CaseStudies'))
 const Product = lazy(() => import('./components/Product'))
 const Contact = lazy(() => import('./components/Contact'))
 
@@ -105,6 +106,12 @@ export default function App() {
         <Suspense fallback={<SectionFallback />}>
           <div className="section-divider">
             <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,0 1080,80 1440,40 L1440,80 L0,80 Z" fill="#0b1121" opacity="0.6"/></svg>
+          </div>
+          <CaseStudies />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <div className="section-divider">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#111827" opacity="0.4"/></svg>
           </div>
           <Product />
         </Suspense>

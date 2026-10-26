@@ -6,15 +6,29 @@
   box-sizing: border-box;
 }
 
+:root {
+  --ink: #1c2233;
+  --ink-soft: #3a4258;
+  --ivory: #faf6ee;
+  --ivory-soft: #f2ebdd;
+  --paper: #ffffff;
+  --forest: #2d5a3d;
+  --forest-soft: #3d7a52;
+  --saffron: #c48a1a;
+  --line: rgba(28, 34, 51, 0.12);
+  --muted: #6b7280;
+  --shadow: 0 20px 60px rgba(28, 34, 51, 0.08);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #0b1121;
-  color: #e2e8f0;
-  line-height: 1.6;
+  background: var(--ivory);
+  color: var(--ink);
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }

@@ -28,7 +28,7 @@ const caseStudies: CaseStudy[] = [
       { heading: 'Research question', body: 'Whether bioplastic produced from potato-peel agricultural waste can match practical performance requirements for water resistance and biodegradation.' },
       { heading: 'Experimental method', body: 'Prepared bioplastic samples from potato peel, tested water absorption/resistance and biodegradation behaviour under controlled conditions.' },
       { heading: 'Analysis', body: 'Used R for statistical interpretation of biodegradation and water-resistance results, comparing the potato-peel formulation against a control formulation.' },
-      { heading: 'Findings', body: 'Reported a 40% improvement in the tested property (water resistance) relative to the control formulation. The exact metric, comparison baseline and measurement protocol should be confirmed against the original thesis before publication. Results presented to the Ministry of Agriculture and Livestock.' },
+      { heading: 'Findings', body: 'Improved water resistance relative to the control formulation; full quantitative results and measurement protocol are documented in the thesis. Results presented to the Ministry of Agriculture and Livestock.' },
       { heading: 'Limitations', body: 'Lab-scale samples only; mechanical strength and scale-up production were not evaluated. Further work needed for commercial viability.' },
     ],
   },

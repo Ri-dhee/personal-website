@@ -9,11 +9,10 @@ import ScrollProgress from './components/ScrollProgress'
 import BackToTop from './components/BackToTop'
 import './App.css'
 
-const About = lazy(() => import('./components/About'))
-const Skills = lazy(() => import('./components/Skills'))
 const Projects = lazy(() => import('./components/Projects'))
 const CaseStudies = lazy(() => import('./components/CaseStudies'))
-const Product = lazy(() => import('./components/Product'))
+const About = lazy(() => import('./components/About'))
+const Skills = lazy(() => import('./components/Skills'))
 const Contact = lazy(() => import('./components/Contact'))
 
 function SmoothScroll() {
@@ -89,18 +88,6 @@ export default function App() {
           <div className="section-divider">
             <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#111827" opacity="0.6"/></svg>
           </div>
-          <About />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <div className="section-divider">
-            <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,0 1080,80 1440,40 L1440,80 L0,80 Z" fill="#0b1121" opacity="0.6"/></svg>
-          </div>
-          <Skills />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <div className="section-divider">
-            <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#111827" opacity="0.7"/></svg>
-          </div>
           <Projects />
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
@@ -111,13 +98,19 @@ export default function App() {
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
           <div className="section-divider">
-            <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#111827" opacity="0.4"/></svg>
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#111827" opacity="0.7"/></svg>
           </div>
-          <Product />
+          <About />
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
           <div className="section-divider">
-            <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#0b1121" opacity="0.4"/></svg>
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,0 1080,80 1440,40 L1440,80 L0,80 Z" fill="#0b1121" opacity="0.6"/></svg>
+          </div>
+          <Skills />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <div className="section-divider">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#111827" opacity="0.4"/></svg>
           </div>
           <Contact />
         </Suspense>

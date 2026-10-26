@@ -51,7 +51,7 @@ a {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #f1f5f9;
+  color: var(--ink);
 }
 
 .about__timeline-list {
@@ -73,18 +73,18 @@ a {
 
 .about__timeline-period {
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: var(--muted);
   font-weight: 600;
 }
 
 .about__timeline-item p {
   margin-top: 0.25rem;
   font-size: 0.95rem;
-  color: #cbd5e1;
+  color: var(--ink-soft);
 }
 
 .case-studies {
-  background: #0f172a;
+  background: var(--ivory-soft);
 }
 
 .case-study {
@@ -97,12 +97,12 @@ a {
 .case-study__title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--ink);
   margin-bottom: 0.25rem;
 }
 
 .case-study__subtitle {
-  color: #94a3b8;
+  color: var(--muted);
   margin-bottom: 1rem;
 }
 
@@ -113,12 +113,12 @@ a {
 
 .case-study__item dt {
   font-weight: 600;
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .case-study__item dd {
   margin: 0.25rem 0 0;
-  color: #cbd5e1;
+  color: var(--ink-soft);
 }
 
 .projects__group {
@@ -128,14 +128,14 @@ a {
 .projects__group-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--ink);
   margin-bottom: 1rem;
 }
 
 .contact__handling {
   margin-top: 1rem;
   font-size: 0.95rem;
-  color: #cbd5e1;
+  color: var(--ink-soft);
 }
 
 .hero__cv-link {
@@ -147,7 +147,7 @@ a {
 }
 
 .hero__cv-link:hover {
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .skip-link {
@@ -396,5 +396,6 @@ section {
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(45, 90, 61, 0.6);
 }
+
 
 

@@ -61,12 +61,12 @@ body::after {
 }
 
 .navbar--scrolled {
-  background: rgba(250, 246, 238, 0.92);
-  backdrop-filter: blur(24px) saturate(1.6);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
-  padding: 0.5rem 2rem;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-  border: 1.5px dashed rgba(14, 165, 233, 0.15);
+  background: rgba(250, 246, 238, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.4rem 1.5rem;
+  box-shadow: none;
+  border-bottom: 1px solid var(--line);
 }
 
 .navbar__inner {
@@ -182,10 +182,10 @@ body::after {
 
 /* ============ HERO ============ */
 .hero {
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
-  padding-top: 5rem;
+  padding-top: 4rem;
   position: relative;
   overflow: hidden;
 }
@@ -305,7 +305,7 @@ body::after {
   gap: 0.5rem;
   padding: 0.35rem 1rem;
   background: rgba(34, 197, 94, 0.06);
-  border: 1.5px dashed rgba(34, 197, 94, 0.25);
+  border: 1.5px solid rgba(34, 197, 94, 0.25);
   border-radius: 4px 14px 4px 14px;
   font-size: 0.8rem;
   font-weight: 600;
@@ -482,7 +482,7 @@ body::after {
 
 .about__text-card {
   background: rgba(242, 235, 221, 0.6);
-  border: 1.5px dashed rgba(14, 165, 233, 0.15);
+  border: 1.5px solid rgba(14, 165, 233, 0.15);
   border-radius: 4px 18px 8px 18px;
   padding: 2rem;
   backdrop-filter: blur(10px);
@@ -536,7 +536,7 @@ body::after {
   padding: 2rem 1rem;
   background: rgba(250, 246, 238, 0.8);
   border-radius: 4px 16px 6px 16px;
-  border: 1.5px dashed rgba(14, 165, 233, 0.12);
+  border: 1.5px solid rgba(14, 165, 233, 0.12);
   transition: all 0.4s ease;
   backdrop-filter: blur(10px);
   position: relative;
@@ -614,7 +614,7 @@ body::after {
   background: rgba(242, 235, 221, 0.6);
   padding: 2rem;
   border-radius: 4px 18px 6px 18px;
-  border: 1.5px dashed rgba(14, 165, 233, 0.1);
+  border: 1.5px solid rgba(14, 165, 233, 0.1);
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
@@ -724,7 +724,7 @@ body::after {
   border-radius: 4px 12px 4px 14px;
   font-size: 0.85rem;
   font-weight: 500;
-  border: 1px dashed rgba(45, 90, 61, 0.2);
+  border: 1px solid rgba(45, 90, 61, 0.2);
   transition: all 0.3s;
   transform: rotate(-0.2deg);
 }
@@ -753,7 +753,7 @@ body::after {
   margin-bottom: 0.75rem;
   padding: 0.35rem 0.85rem;
   border-radius: 4px 12px 4px 12px;
-  border: 1.5px dashed rgba(45, 90, 61, 0.2);
+  border: 1.5px solid rgba(45, 90, 61, 0.2);
   background: rgba(45, 90, 61, 0.06);
   color: #7DD3FC;
   font-size: 0.78rem;
@@ -773,7 +773,7 @@ body::after {
 .product__card,
 .product__panel {
   background: rgba(250, 246, 238, 0.7);
-  border: 1.5px dashed rgba(14, 165, 233, 0.1);
+  border: 1.5px solid rgba(14, 165, 233, 0.1);
   border-radius: 4px 18px 6px 18px;
   padding: 2rem;
   backdrop-filter: blur(10px);
@@ -828,7 +828,7 @@ body::after {
   padding: 1rem;
   border-radius: 4px 12px 4px 12px;
   background: rgba(242, 235, 221, 0.6);
-  border: 1.5px dashed rgba(14, 165, 233, 0.1);
+  border: 1.5px solid rgba(14, 165, 233, 0.1);
   text-align: center;
   transform: rotate(-0.2deg);
 }
@@ -845,7 +845,7 @@ body::after {
   display: block;
   font-size: 1.4rem;
   font-weight: 800;
-  color: #f8fafc;
+  color: var(--ink);
 }
 
 .product__stat-label {
@@ -895,7 +895,7 @@ body::after {
   background: rgba(250, 246, 238, 0.7);
   padding: 2rem;
   border-radius: 4px 18px 6px 18px;
-  border: 1.5px dashed rgba(14, 165, 233, 0.1);
+  border: 1.5px solid rgba(14, 165, 233, 0.1);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -997,7 +997,7 @@ body::after {
   border-radius: 3px 10px 3px 10px;
   font-size: 0.8rem;
   font-weight: 500;
-  border: 1px dashed rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.2);
   transition: all 0.3s;
   transform: rotate(-0.3deg);
 }
@@ -1065,7 +1065,7 @@ body::after {
   padding: 0.75rem 1rem;
   background: rgba(242, 235, 221, 0.6);
   border-radius: 4px 12px 4px 12px;
-  border: 1.5px dashed rgba(14, 165, 233, 0.08);
+  border: 1.5px solid rgba(14, 165, 233, 0.08);
   transition: all 0.3s;
 }
 
@@ -1099,7 +1099,7 @@ body::after {
   align-items: center;
   justify-content: center;
   background: rgba(242, 235, 221, 0.6);
-  border: 1.5px dashed rgba(14, 165, 233, 0.1);
+  border: 1.5px solid rgba(14, 165, 233, 0.1);
   border-radius: 4px 10px 4px 10px;
   color: var(--muted);
   transition: all 0.3s;
@@ -1140,7 +1140,7 @@ body::after {
   width: 100%;
   padding: 0.9rem 1.1rem;
   background: rgba(242, 235, 221, 0.6);
-  border: 1.5px dashed rgba(14, 165, 233, 0.12);
+  border: 1.5px solid rgba(14, 165, 233, 0.12);
   border-radius: 4px 12px 4px 12px;
   color: var(--ink);
   font-family: inherit;
@@ -1176,7 +1176,7 @@ body::after {
   padding: 0.5rem 0.75rem;
   background: rgba(239, 68, 68, 0.1);
   border-radius: 4px 8px 4px 8px;
-  border: 1.5px dashed rgba(239, 68, 68, 0.2);
+  border: 1.5px solid rgba(239, 68, 68, 0.2);
 }
 
 .contact__field-error {
@@ -1734,6 +1734,8 @@ body::after {
     height: 16px;
   }
 }
+
+
 
 
 

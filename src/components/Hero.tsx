@@ -13,9 +13,8 @@ export default function Hero() {
           </h1>
           <h2 className="hero__title">Research, Agriculture &amp; Practical Digital Tools</h2>
           <p className="hero__tagline">
-            Organic Agriculture graduate and field researcher with experience in socio-economic
-            surveying, data analysis and practical digital tools. AI assistance is used in
-            selected projects such as LabLedger, where it supports prototyping and debugging.
+            Organic Agriculture graduate and field researcher working in socio-economic
+            surveying, data analysis and practical digital tools.
           </p>
           <div className="hero__contact-row">
             <span>{CONTACT_ICONS.pin} Thimphu, Bhutan</span>

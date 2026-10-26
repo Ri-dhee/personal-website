@@ -180,6 +180,70 @@ body::after {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* ============ HERO CLOUDS ============ */
+.hero__clouds {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__cloud {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(226, 232, 240, 0.18) 0%, rgba(226, 232, 240, 0) 70%);
+  filter: blur(40px);
+  will-change: transform;
+  animation: hero-cloud-drift 60s linear infinite;
+}
+
+.hero__cloud--1 {
+  width: 420px;
+  height: 260px;
+  top: 10%;
+  left: -10%;
+  animation-duration: 70s;
+}
+
+.hero__cloud--2 {
+  width: 360px;
+  height: 220px;
+  top: 40%;
+  right: -8%;
+  animation-duration: 55s;
+  animation-direction: reverse;
+}
+
+.hero__cloud--3 {
+  width: 300px;
+  height: 180px;
+  bottom: 15%;
+  left: 20%;
+  animation-duration: 80s;
+}
+
+.hero__cloud--4 {
+  width: 260px;
+  height: 160px;
+  top: 20%;
+  right: 25%;
+  animation-duration: 65s;
+  animation-direction: reverse;
+}
+
+@keyframes hero-cloud-drift {
+  0% { transform: translateX(-8%) translateY(0); }
+  50% { transform: translateX(8%) translateY(-4%); }
+  100% { transform: translateX(-8%) translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__cloud {
+    animation: none;
+  }
+}
+
 /* ============ HERO ============ */
 .hero {
   min-height: 85vh;

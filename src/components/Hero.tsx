@@ -4,6 +4,12 @@ import { CONTACT_ICONS } from './socialIconsConstants'
 export default function Hero() {
   return (
     <section id="hero" className="hero">
+      <div className="hero__clouds" aria-hidden="true">
+        <div className="hero__cloud hero__cloud--1" />
+        <div className="hero__cloud hero__cloud--2" />
+        <div className="hero__cloud hero__cloud--3" />
+        <div className="hero__cloud hero__cloud--4" />
+      </div>
       <div className="container hero__inner">
         <div className="hero__content">
           <div className="hero__badge">Open to opportunities</div>

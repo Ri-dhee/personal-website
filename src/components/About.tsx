@@ -55,6 +55,7 @@ const experience = [
   { period: 'Aug – Sep 2024', role: 'National Agrifood Innovation Challenge (Loden, FAO, UNDP)', detail: 'Value-chain solution for Bhutan’s agrifood sector, pitched to dignitaries.' },
   { period: 'Sep 2023 – May 2024', role: 'Undergraduate thesis, CNR (potato-peel bioplastic)', detail: 'Lab research, statistical analysis in R, findings presented to the Ministry of Agriculture and Livestock.' },
   { period: 'Dec 2022 – Jan 2023', role: 'Organic farm internship, Samdrup Jongkhar Initiative', detail: 'Regenerative agriculture practice and community outreach.' },
+  { period: '2024 – Present', role: 'Editor and maintainer, Reading Venture (blog)', detail: 'Maintaining a Blogger-based journal from Bhutan: custom theme, SEO, content planning, and publishing essays on agriculture, technology, AI, and Bhutanese development.' },
 ]
 
 export default function About() {
@@ -89,7 +90,10 @@ export default function About() {
                 <a href="https://abetterlifelearning.blogspot.com" target="_blank" rel="noopener noreferrer">
                   Reading Venture
                 </a>
-                , my journal from Bhutan.
+                , my journal from Bhutan. Maintained for over two years, it covers sustainable
+                agriculture and soil data, AI and software supply-chain security, Bhutanese
+                development (including Gelephu Mindfulness City), and personal growth — with
+                hands-on work in Blogger theming, SEO, content planning, and publishing.
               </p>
             </div>
           </Reveal>

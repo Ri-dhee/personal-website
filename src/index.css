@@ -203,7 +203,7 @@ section {
   font-weight: 800;
   margin-bottom: 3.5rem;
   text-align: center;
-  color: #f1f5f9;
+  color: var(--ink);
   position: relative;
 }
 

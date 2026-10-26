@@ -1,4 +1,4 @@
-﻿*,
+*,
 *::before,
 *::after {
   margin: 0;
@@ -34,7 +34,7 @@ body {
 }
 
 ::selection {
-  background: rgba(14, 165, 233, 0.3);
+  background: rgba(45, 90, 61, 0.3);
   color: #fff;
 }
 
@@ -156,7 +156,7 @@ a {
   left: 1rem;
   z-index: 10000;
   padding: 0.75rem 1.5rem;
-  background: #0EA5E9;
+  background: var(--forest);
   color: #fff;
   font-weight: 600;
   font-size: 0.9rem;
@@ -171,7 +171,7 @@ a {
 a:focus-visible,
 button:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid #0EA5E9;
+  outline: 2px solid var(--forest);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -222,7 +222,7 @@ section {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #0EA5E9, #10B981);
+  background: linear-gradient(135deg, var(--forest), var(--forest-soft));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -244,10 +244,10 @@ section {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #0EA5E9, #10B981);
+  background: linear-gradient(135deg, var(--forest), var(--forest-soft));
   color: #fff;
-  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
-  border: 1px solid rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 15px rgba(45, 90, 61, 0.3);
+  border: 1px solid rgba(45, 90, 61, 0.3);
 }
 
 .btn-primary::before {
@@ -267,30 +267,30 @@ section {
 
 .btn-primary:hover {
   transform: translateY(-3px) rotate(-0.3deg);
-  box-shadow: 0 8px 30px rgba(14, 165, 233, 0.45);
+  box-shadow: 0 8px 30px rgba(45, 90, 61, 0.45);
 }
 
 .btn-primary:active {
   transform: translateY(-1px) rotate(-0.1deg) scale(0.98);
-  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 15px rgba(45, 90, 61, 0.3);
 }
 
 .btn-outline {
   background: transparent;
-  color: #38BDF8;
-  border: 1.5px dashed rgba(56, 189, 248, 0.5);
+  color: var(--forest);
+  border: 1.5px dashed rgba(45, 90, 61, 0.5);
 }
 
 .btn-outline:hover {
-  background: rgba(56, 189, 248, 0.1);
-  border-color: #38BDF8;
+  background: rgba(45, 90, 61, 0.1);
+  border-color: var(--forest);
   transform: translateY(-3px) rotate(0.3deg);
-  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 8px 25px rgba(45, 90, 61, 0.2);
 }
 
 .btn-outline:active {
   transform: translateY(-1px) rotate(0.1deg) scale(0.98);
-  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 4px 15px rgba(45, 90, 61, 0.15);
 }
 
 /* ============ REVEAL ANIMATIONS ============ */
@@ -357,7 +357,7 @@ section {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #0EA5E9, #10B981);
+  background: linear-gradient(90deg, var(--forest), var(--forest-soft));
   z-index: 1001;
   transform-origin: left;
   border-radius: 0 2px 2px 0;
@@ -371,7 +371,7 @@ section {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0EA5E9, #10B981);
+  background: linear-gradient(135deg, var(--forest), var(--forest-soft));
   color: #fff;
   border: none;
   cursor: pointer;
@@ -383,7 +383,7 @@ section {
   pointer-events: none;
   transition: all 0.3s ease;
   z-index: 999;
-  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+  box-shadow: 0 4px 15px rgba(45, 90, 61, 0.4);
 }
 
 .back-to-top--visible {
@@ -394,5 +394,7 @@ section {
 
 .back-to-top:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6);
+  box-shadow: 0 6px 20px rgba(45, 90, 61, 0.6);
 }
+
+

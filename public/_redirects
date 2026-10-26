@@ -2,5 +2,8 @@
 /sitemap.xml  /sitemap.xml  200
 /robots.txt  /robots.txt  200
 
+# Removed suspicious download (see security audit)
+/cv.pdf  /404.html  404
+
 # SPA fallback — uncomment if you add client-side routes like /blog/:id
 # /*  /index.html  200

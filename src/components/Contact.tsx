@@ -195,7 +195,6 @@ export default function Contact() {
                       onChange={handleChange}
                       tabIndex={-1}
                       autoComplete="off"
-                      aria-hidden="true"
                     />
                   </div>
                   {error && <p className="contact__error" role="alert" aria-live="assertive">{error}</p>}

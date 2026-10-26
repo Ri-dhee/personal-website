@@ -163,7 +163,7 @@ body::after {
   display: block;
   width: 24px;
   height: 2px;
-  background: #e2e8f0;
+  background: var(--ink);
   border-radius: 2px;
   transition: all 0.3s;
 }
@@ -263,7 +263,7 @@ body::after {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(14, 165, 233, 0.18);
+  background: rgba(45, 90, 61, 0.18);
   border-radius: 50%;
   animation: particle-float linear infinite;
 }
@@ -406,7 +406,7 @@ body::after {
 
 .hero__social a:hover {
   color: var(--forest);
-  background: rgba(56, 189, 248, 0.1);
+  background: rgba(45, 90, 61, 0.1);
   transform: translateY(-2px);
 }
 
@@ -500,7 +500,7 @@ body::after {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 3.5rem;
   line-height: 1;
-  color: rgba(14, 165, 233, 0.2);
+  color: rgba(45, 90, 61, 0.2);
   transition: left 0.8s ease;
 }
 
@@ -655,7 +655,7 @@ body::after {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.06), transparent 60%);
+  background: radial-gradient(circle, rgba(45, 90, 61, 0.06), transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -700,7 +700,7 @@ body::after {
 
 .skills__card:hover .skills__card-icon,
 .skills__card--active .skills__card-icon {
-  background: rgba(14, 165, 233, 0.2);
+  background: rgba(45, 90, 61, 0.2);
   color: #7DD3FC;
   transform: scale(1.05);
 }
@@ -719,20 +719,20 @@ body::after {
 
 .skills__tag {
   padding: 0.35rem 0.9rem;
-  background: rgba(14, 165, 233, 0.06);
+  background: rgba(45, 90, 61, 0.06);
   color: var(--ink-soft);
   border-radius: 4px 12px 4px 14px;
   font-size: 0.85rem;
   font-weight: 500;
-  border: 1px dashed rgba(14, 165, 233, 0.2);
+  border: 1px dashed rgba(45, 90, 61, 0.2);
   transition: all 0.3s;
   transform: rotate(-0.2deg);
 }
 
 .skills__tag:hover {
-  background: rgba(14, 165, 233, 0.18);
+  background: rgba(45, 90, 61, 0.18);
   color: var(--forest);
-  border-color: rgba(14, 165, 233, 0.35);
+  border-color: rgba(45, 90, 61, 0.35);
   transform: translateY(-1px);
 }
 
@@ -753,8 +753,8 @@ body::after {
   margin-bottom: 0.75rem;
   padding: 0.35rem 0.85rem;
   border-radius: 4px 12px 4px 12px;
-  border: 1.5px dashed rgba(14, 165, 233, 0.2);
-  background: rgba(14, 165, 233, 0.06);
+  border: 1.5px dashed rgba(45, 90, 61, 0.2);
+  background: rgba(45, 90, 61, 0.06);
   color: #7DD3FC;
   font-size: 0.78rem;
   font-weight: 700;
@@ -993,7 +993,7 @@ body::after {
 
 .project-card__tag {
   padding: 0.25rem 0.8rem;
-  background: rgba(56, 189, 248, 0.06);
+  background: rgba(45, 90, 61, 0.06);
   border-radius: 3px 10px 3px 10px;
   font-size: 0.8rem;
   font-weight: 500;
@@ -1011,7 +1011,7 @@ body::after {
 }
 
 .project-card__tag:hover {
-  background: rgba(56, 189, 248, 0.15);
+  background: rgba(45, 90, 61, 0.15);
   transform: translateY(-1px) rotate(0deg);
 }
 
@@ -1071,7 +1071,7 @@ body::after {
 
 .contact__detail:hover {
   background: rgba(242, 235, 221, 0.6);
-  border-color: rgba(14, 165, 233, 0.2);
+  border-color: rgba(45, 90, 61, 0.2);
   transform: translateX(4px);
 }
 
@@ -1345,8 +1345,8 @@ body::after {
 .back-to-top:hover {
   transform: translateY(-3px) rotate(-3deg);
   border-color: rgba(14, 165, 233, 0.4);
-  background: rgba(14, 165, 233, 0.2);
-  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.2);
+  background: rgba(45, 90, 61, 0.2);
+  box-shadow: 0 6px 20px rgba(45, 90, 61, 0.2);
 }
 
 /* ============ SHINE EFFECT ON BUTTONS ============ */
@@ -1734,4 +1734,5 @@ body::after {
     height: 16px;
   }
 }
+
 
